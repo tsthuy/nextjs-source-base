@@ -1,17 +1,43 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "next/typescript",
-    "plugin:tailwindcss/recommended"
-  ],
+  "extends": ["next", "next/core-web-vitals", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "simple-import-sort", "unicorn"],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "parser": "@typescript-eslint/parser",
   "rules": {
-    "no-console": ["error", { "allow": ["info", "warn", "error"] }],
-    "tailwindcss/classnames-order": "error"
+    "react/react-in-jsx-scope": "off",
+    "no-var": "error",
+    "prefer-const": "error",
+    "simple-import-sort/imports": "error",
+    "unicorn/filename-case": ["error", { "cases": { "kebabCase": true } }],
+    "react/jsx-pascal-case": ["error", { "allowAllCaps": true, "ignore": [] }]
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js"],
-      "parser": "@typescript-eslint/parser"
+      "files": ["**/*.js", "**/*.ts", "**/*.tsx"],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              ["^react$", "^next", "^[a-z]"],
+              ["^@"],
+              ["^~"],
+              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+              ["^.+\\.s?css$"],
+              ["^\\u0000"]
+            ]
+          }
+        ],
+        "unicorn/filename-case": ["error", { "cases": { "kebabCase": true } }],
+        "react/jsx-pascal-case": [
+          "error",
+          { "allowAllCaps": true, "ignore": [] }
+        ]
+      }
     }
   ]
 }
