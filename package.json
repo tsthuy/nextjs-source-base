@@ -2,16 +2,6 @@
   "name": "source-base",
   "version": "0.1.0",
   "private": true,
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{css,scss,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -19,8 +9,7 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
@@ -35,6 +24,8 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
